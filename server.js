@@ -58,8 +58,12 @@ app.use(function(err, req, res, next) {
 
 //app.listen('127.0.0.1', 80);
 
-var ipaddr = process.env.OPENSHIFT_INTERNAL_IP;
-var port = process.env.PORT || process.env.OPENSHIFT_INTERNAL_PORT || 9000;
+//var ipaddr = process.env.OPENSHIFT_INTERNAL_IP;
+//var port = process.env.PORT || process.env.OPENSHIFT_INTERNAL_PORT || 9000;
+
+var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var ipaddr = process.env.OPENSHIFT_NODEJS_IP || "127.0.0.1";
+
 app.listen(port, ipaddr);
 console.log("Started at http://" + ipaddr + ":" + port + "/");
 
