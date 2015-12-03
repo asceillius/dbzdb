@@ -1,0 +1,107 @@
+extends layout
+
+block content
+  if message
+    p #{message}
+  .container
+    .row
+      .col-sm-3
+      .col-sm-4
+        h1.center Edit Card
+    br
+    .row
+      .col-sm-2
+        if card.rarity == "P"
+          img(src="/images/#{card.setName}/#{card.setNumber}p.jpg", height="515")
+        else if card.rarity == "S"
+          img(src="/images/#{card.setName}/#{card.setNumber}s.jpg", height="515")
+        else
+          img(src="/images/#{card.setName}/#{card.setNumber}.jpg", height="515")
+      .col-sm-3
+      .col-sm-4
+        form.form-horizontal(method="post", action="/save", name="input.form-controlCard", id="input.form-controlCard")
+          .form-group
+            label.col-sm-3(for="name") Name
+            .col-sm-9
+              input.form-control(type="text", name="name", value="#{card.name}")
+          .form-group
+            label.col-sm-3(for="rarity") Rarity
+            .col-sm-9
+              select.form-control(name="rarity")
+                option(value="S") Starter
+                option(value="C") Common
+                option(value="U") Uncommon
+                option(value="R") Rare
+                option(value="UR") Ultra Rare
+                option(value="P") Promotional
+                option(value="", selected)
+          .form-group
+            label.col-sm-3(for="setName") Set
+            .col-sm-9
+              select.form-control(name="setName")
+                option(value="Set 1") Set 1
+                option(value-"Heroes & Villains") Heroes & Villians
+                option(value="Movie Collection 1", ) Movie Collection 1
+                option(value="Evolution") Evolution
+                option(value="")
+          .form-group
+            label.col-sm-3(for="setNumber") Set Number
+            .col-sm-9
+              input.form-control(type="number", name="setNumber", value="#{card.setNumber}")
+          .form-group
+            label.col-sm-3(for="type") Card Type
+            .col-sm-9
+              select.form-control(name="type")
+                option(value="")
+                option(value="Main Personality") Main Personality
+                option(value="Mastery") Mastery
+                option(value="Setup") Setup
+                option(value="Drill") Drill
+                option(value="Physical Combat") Physical Combat
+                option(value="Energy Combat") Energy Combat
+                option(value="Event") Event
+                option(value="Ally") Ally
+                option(value="Dragon Ball") Dragon Ball
+          .form-group
+            label.col-sm-3(for="color") Color
+            .col-sm-9
+              select.form-control(name="color")
+                option(value="")
+                option(value="Black") Black
+                option(value="Blue") Blue
+                option(value="Orange") Orange
+                option(value="Red") Red
+                option(value="Namekian") Namekian
+                option(value="Saiyan") Saiyan
+                option(value="Freestyle", ) Freestyle
+          .form-group
+            label.col-sm-3(for="alignment") Alignment
+            .col-sm-9
+              select.form-control(name="alignment")
+                option(value="")
+                option(value="Hero") Hero
+                option(value="Villain") Villain
+                option(value="Either", ) Either
+          .form-group
+            label.col-sm-3(for="text") Card Text
+            .col-sm-9
+              textarea.form-control(name="text", form="input.form-controlCard")
+          .form-group
+            label.col-sm-3(for="endurance") Endurance
+            .col-sm-9
+              input.form-control(type="number", value="#{card.endurance}", name="endurance")
+          .form-group
+            .col-sm-3
+            .col-sm-9
+              input.form-control.btn-warning.saveButton(type="submit", value="submit", id="input-submit")
+    .row.left
+      p Original Values:
+      p.capitalize Name: #{card.name}
+      p Rarity: #{card.rarity}
+      p Set Name: #{card.setName}
+      p Set Number: #{card.setNumber}
+      p Type: #{card.type}
+      p Color: #{card.color}
+      p Alignment: #{card.alignment}
+      p Text: #{card.text}
+      p Endurance: #{card.endurance}

@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  p #{cards.quantity} cards returned.
+  each card in cards
+    .card
+      .row
+        .col-sm-4
+          if card.rarity == 'P'
+            img.card-img(src="/images/#{card.setName}/#{card.setNumber}p.jpg")
+          else if card.rarity == "S"
+            img.card-img(src="/images/#{card.setName}/#{card.setNumber}s.jpg")
+          else
+            img.card-img(src="/images/#{card.setName}/#{card.setNumber}.jpg")
+        .col-sm-8.card-info
+          p.capitalize #{card.name}
+          p #{card.setName} #{card.rarity}#{card.setNumber}
+          p #{card.color} #{card.type}
+          if card.alignment != 'Either'
+            p #{card.alignment}
+          p #{card.text}
+          if card.endurance != '0'
+            p Endurance: #{card.endurance}
+          form.form-horizontal(method="post", action="/edit")
+            .form-group.col-sm-2
+              input.hidden(type="text", name="name", value="#{card.name}")
+              input.form-control.btn-warning(type="submit", value="Edit")
+      .row
+        .col-sm-12
+          hr
