@@ -6,11 +6,14 @@ block content
       .row
         .col-sm-4
           if card.rarity == 'P'
-            img.card-img(src="/images/#{card.setName}/#{card.setNumber}p.jpg")
+            a(href="#", data-featherlight="/images/#{card.setName}/#{card.setNumber}p.jpg")
+              img.card-img(src="/images/#{card.setName}/#{card.setNumber}p.jpg")
           else if card.rarity == "S"
-            img.card-img(src="/images/#{card.setName}/#{card.setNumber}s.jpg")
+            a(href="#", data-featherlight="/images/#{card.setName}/#{card.setNumber}s.jpg")
+              img.card-img(src="/images/#{card.setName}/#{card.setNumber}s.jpg")
           else
-            img.card-img(src="/images/#{card.setName}/#{card.setNumber}.jpg")
+            a(href="#", data-featherlight="/images/#{card.setName}/#{card.setNumber}.jpg")
+              img.card-img(src="/images/#{card.setName}/#{card.setNumber}.jpg")
         .col-sm-8.card-info
           p.capitalize #{card.name}
           p #{card.setName} #{card.rarity}#{card.setNumber}

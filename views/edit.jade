@@ -11,12 +11,15 @@ block content
     br
     .row
       .col-sm-2
-        if card.rarity == "P"
-          img(src="/images/#{card.setName}/#{card.setNumber}p.jpg", height="515")
+        if card.rarity == 'P'
+          a(href="#", data-featherlight="/images/#{card.setName}/#{card.setNumber}p.jpg")
+            img.card-img(src="/images/#{card.setName}/#{card.setNumber}p.jpg")
         else if card.rarity == "S"
-          img(src="/images/#{card.setName}/#{card.setNumber}s.jpg", height="515")
+          a(href="#", data-featherlight="/images/#{card.setName}/#{card.setNumber}s.jpg")
+            img.card-img(src="/images/#{card.setName}/#{card.setNumber}s.jpg")
         else
-          img(src="/images/#{card.setName}/#{card.setNumber}.jpg", height="515")
+          a(href="#", data-featherlight="/images/#{card.setName}/#{card.setNumber}.jpg")
+            img.card-img(src="/images/#{card.setName}/#{card.setNumber}.jpg")
       .col-sm-3
       .col-sm-4
         form.form-horizontal(method="post", action="/save", name="input.form-controlCard", id="input.form-controlCard")
