@@ -56,6 +56,11 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen('127.0.0.1', 80);
+//app.listen('127.0.0.1', 80);
+
+var ipaddr = process.env.OPENSHIFT_INTERNAL_IP;
+var port = process.env.PORT || process.env.OPENSHIFT_INTERNAL_PORT || 9000;
+app.start(port, ipaddr);
+app.log.info("Started at http://" + ipaddr + ":" + port + "/");
 
 module.exports = app;
