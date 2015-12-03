@@ -61,6 +61,6 @@ app.use(function(err, req, res, next) {
 var ipaddr = process.env.OPENSHIFT_INTERNAL_IP;
 var port = process.env.PORT || process.env.OPENSHIFT_INTERNAL_PORT || 9000;
 app.listen(port, ipaddr);
-app.log.info("Started at http://" + ipaddr + ":" + port + "/");
+console.log("Started at http://" + ipaddr + ":" + port + "/");
 
 module.exports = app;
